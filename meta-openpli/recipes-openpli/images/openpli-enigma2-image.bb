@@ -25,7 +25,10 @@ WIFI_DRIVERS = " \
 
 WIFI_BSP_DRIVERS ?= " "
 
-ENIGMA2_PLUGINS = " \
+ENIGMA2_PLUGINS_append_mipsel += "\
+       	enigma2-plugin-systemplugins-serviceapp \
+        "
+ENIGMA2_PLUGINS += "\
 	enigma2-plugin-extensions-audiosync \
 	enigma2-plugin-extensions-autobackup \
 	enigma2-plugin-extensions-cutlisteditor \
@@ -56,12 +59,19 @@ ENIGMA2_PLUGINS = " \
 	${@bb.utils.contains('OPENPLI_FEATURES', 'dvd', 'enigma2-plugin-extensions-cdinfo enigma2-plugin-extensions-dvdplayer', '', d)} \
 	${@bb.utils.contains('OPENPLI_FEATURES', 'fan', 'enigma2-plugin-systemplugins-tempfancontrol', '', d)} \
 	${@bb.utils.contains('OPENPLI_FEATURES', '7seg', 'enigma2-plugin-systemplugins-vfdcontrol', '', d)} \
+	enigma2-plugin-extensions-dlnabrowser \
+	enigma2-plugin-extensions-dlnaserver \
+	enigma2-plugin-extensions-subssupport \
+	enigma2-plugin-systemplugins-systemtime \
+	enigma2-plugin-systemplugins-mountmanager \
 	"
 
 DEPENDS += " \
 	enigma2 \
 	"
-
+IMAGE_INSTALL_append_mipsel += " \
+	${@bb.utils.contains('TARGET_FPU', 'soft', '', 'nodejs', d)} \
+	"
 IMAGE_INSTALL += " \
 	aio-grab \
 	enigma2 \
@@ -70,6 +80,8 @@ IMAGE_INSTALL += " \
 	ofgwrite \
 	settings-autorestore \
 	tuxbox-common \
+	htop \
+	wget \
 	${ENIGMA2_PLUGINS} \
 	\
 	${WIFI_DRIVERS} \
