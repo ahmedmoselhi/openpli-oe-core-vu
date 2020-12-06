@@ -10,6 +10,7 @@ DEPENDS = "gstreamer1.0 gstreamer1.0-plugins-base ffmpeg"
 
 SRC_URI = "git://gitlab.freedesktop.org/gstreamer/gst-libav.git;protocol=https;branch=1.18;name=gst_libav"
 
+
 inherit pkgconfig
 
 EXTRA_OEMESON = "-Ddoc=disabled"
