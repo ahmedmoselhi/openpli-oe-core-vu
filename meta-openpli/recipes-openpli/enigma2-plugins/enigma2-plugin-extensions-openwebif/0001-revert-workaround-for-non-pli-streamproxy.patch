@@ -1,5 +1,4 @@
 diff --git a/plugin/httpserver.py b/plugin/httpserver.py
-index 80851926..cdf913e8 100644
 --- a/plugin/httpserver.py
 +++ b/plugin/httpserver.py
 @@ -354,7 +354,7 @@ class AuthResource(resource.Resource):
