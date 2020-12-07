@@ -26,13 +26,23 @@ WIFI_DRIVERS = " \
 WIFI_BSP_DRIVERS ?= " "
 
 ENIGMA2_PLUGINS_append_mipsel += "\
-       	enigma2-plugin-systemplugins-serviceapp \
+        enigma2-plugin-systemplugins-serviceapp \
         "
 ENIGMA2_PLUGINS += "\
+        kodi \
 	enigma2-plugin-extensions-audiosync \
 	enigma2-plugin-extensions-autobackup \
 	enigma2-plugin-extensions-cutlisteditor \
 	enigma2-plugin-extensions-graphmultiepg \
+        enigma2-plugin-systemplugins-signalfinder \
+        enigma2-plugin-systemplugins-mountmanager \
+        enigma2-plugin-systemplugins-extrafancontrol \
+        enigma2-plugin-extensions-ts-sateditor \
+        enigma2-plugin-skins-glamouraurafhd \ 
+        enigma2-plugin-skins-kravenfhd \
+        enigma2-plugin-skins-mx-hq7 \
+        enigma2-plugin-skins-mx-hq9w \
+        enigma2-plugin-skins-xionhdf \
 	enigma2-plugin-extensions-mediaplayer \
 	enigma2-plugin-extensions-mediascanner \
 	enigma2-plugin-extensions-moviecut \
@@ -99,6 +109,11 @@ IMAGE_INSTALL += " \
 	${@bb.utils.contains('MACHINE_FEATURES', 'ctrlrc', "enigma2-plugin-systemplugins-remotecontrolcode", "", d)} \
 	\
 	${@bb.utils.contains('OPENPLI_FEATURES', 'dvd', 'cdtextinfo', '', d)} \
+        softcams-enigma2-meta \
+        enigma2-plugin-extensions-openmultiboot \
+        astra-sm \
+        bluez5 \
+        enigma2-plugin-systemplugins-blindscan \
 	"
 
 export IMAGE_BASENAME = "openpli-enigma2"
