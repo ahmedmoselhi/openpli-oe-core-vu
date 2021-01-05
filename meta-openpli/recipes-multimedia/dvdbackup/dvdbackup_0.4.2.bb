@@ -7,7 +7,7 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=d32239bcb673463ab874e80d47fae504"
 DEPENDS = "libdvdread virtual/gettext"
 PR = "r2"
 
-SRC_URI = "${SOURCEFORGE_MIRROR}/${BPN}/${BP}.tar.xz"
+SRC_URI = "https://src.fedoraproject.org/lookaside/extras/dvdbackup/dvdbackup-0.4.2.tar.xz/28f273b2f27a3afea3a3c965ddbede86/${BP}.tar.xz"
 
 SRC_URI += "file://autoconf-warnings-are-not-errors.patch"
 
