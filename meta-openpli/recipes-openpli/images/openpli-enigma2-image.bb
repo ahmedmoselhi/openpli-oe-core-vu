@@ -23,34 +23,6 @@ WIFI_DRIVERS = " \
 	kernel-module-zd1211rw \
 	"
 
-WIFI_BSP_DRIVERS ?= " "
-
-OPTIONAL_WIFI_PACKAGES = "\
-        ${@ 'kernel-module-8812au' if ("${KERNEL_VERSION}" and "${MACHINE}" != "dm8000" and bb.utils.vercmp_string("${KERNEL_VERSION}", '4.0') < 0) else '' } \
-        ${@ 'kernel-module-8814au' if ("${KERNEL_VERSION}" and "${MACHINE}" != "dm8000" and bb.utils.vercmp_string("${KERNEL_VERSION}", '4.0') < 0) else '' } \
-        ${@ 'kernel-module-rt5572sta' if ("${KERNEL_VERSION}" and "${MACHINE}" != "dm8000" and bb.utils.vercmp_string("${KERNEL_VERSION}", '3.10') < 0) else '' } \
-        ${@ 'kernel-module-rt8188eu' if ("${KERNEL_VERSION}" and "${MACHINE}" != "dm8000" and bb.utils.vercmp_string("${KERNEL_VERSION}", '3.12') < 0) else '' } \
-        ${@ 'kernel-module-rt3573sta' if ("${KERNEL_VERSION}" and "${MACHINE}" != "dm8000" and bb.utils.vercmp_string("${KERNEL_VERSION}", '3.12') < 0) else '' } \
-        ${@ 'kernel-module-mt7601usta' if ("${KERNEL_VERSION}" and "${MACHINE}" != "dm8000" and bb.utils.vercmp_string("${KERNEL_VERSION}", '4.2') < 0) else '' } \
-        ${@ 'kernel-module-8723a' if ("${KERNEL_VERSION}" and "${MACHINE}" != "dm8000" and bb.utils.vercmp_string("${KERNEL_VERSION}", '4.5') < 0) else '' } \
-        ${@ 'kernel-module-8723bu' if ("${KERNEL_VERSION}" and "${MACHINE}" != "dm8000" and bb.utils.vercmp_string("${KERNEL_VERSION}", '4.6') < 0) else '' } \
-        ${@ 'kernel-module-8192eu' if ("${KERNEL_VERSION}" and bb.utils.vercmp_string("${KERNEL_VERSION}", '4.7') < 0) else '' } \
-        ${@ 'kernel-module-mt7610u' if ("${KERNEL_VERSION}" and "${MACHINE}" != "dm8000" and bb.utils.vercmp_string("${KERNEL_VERSION}", '4.19') < 0) else '' } \
-        \
-        ${@ 'kernel-module-8192fu' if ("${KERNEL_VERSION}" and bb.utils.vercmp_string("${KERNEL_VERSION}", '4.0') >= 0) else '' } \
-        ${@ 'kernel-module-8821cu' if ("${KERNEL_VERSION}" and bb.utils.vercmp_string("${KERNEL_VERSION}", '4.0') >= 0) else '' } \
-        ${@ 'kernel-module-88xxau' if ("${KERNEL_VERSION}" and bb.utils.vercmp_string("${KERNEL_VERSION}", '4.0') >= 0) else '' } \
-        \
-        ${@bb.utils.contains('MACHINE_ESSENTIAL_EXTRA_RDEPENDS', 'rtl8723bs', '', bb.utils.contains('MACHINE_ESSENTIAL_EXTRA_RRECOMMENDS', 'spycat-rtl8723bs', '', 'kernel-mod>
-        \
-        kernel-module-88x2bu \
-        kernel-module-8189es \
-        firmware-rtl8723bu \
-        firmware-rtl8188eu  \
-        firmware-rtl8192eu \
-        firmware-mt7601u \
-        "
-
 ENIGMA2_PLUGINS = " \
 	enigma2-plugin-extensions-audiosync \
 	enigma2-plugin-extensions-autobackup \
@@ -94,6 +66,7 @@ DEPENDS += " \
 
 IMAGE_INSTALL += " \
 	aio-grab \
+        astra-sm \
 	enigma2 \
         kodi \
         kodi-addons-meta \
@@ -107,7 +80,6 @@ IMAGE_INSTALL += " \
 	${ENIGMA2_PLUGINS} \
 	\
 	${WIFI_DRIVERS} \
-        ${OPTIONAL_WIFI_PACKAGES} \
 	\
 	${@bb.utils.contains_any('MACHINE', 'vuuno vuduo vuultimo vusolo vusolo2 vuduo2 vusolose vuzero vuuno4k vuuno4kse vuzero4k vuultimo4k vusolo4k vuduo4k vuduo4kse', 'vuplus-tuner-turbo', '', d)} \
 	${@bb.utils.contains_any('MACHINE', 'vuuno4kse vuultimo4k vuduo4k vuduo4kse', 'vuplus-hdmi-in-helper', '', d)} \
